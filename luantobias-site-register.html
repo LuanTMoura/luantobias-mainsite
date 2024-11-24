@@ -1,0 +1,188 @@
+<html><head><base href="." />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<title>Register</title>
+<link rel="stylesheet" href=".\css\luantobias-site-register.css">
+</head>
+<body>
+<div class="controls">
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <button class="lang-toggle" onclick="toggleLanguage()">
+    <i class="fas fa-globe"></i>
+  </button>
+  <button class="help-toggle" onclick="toggleHelp()">
+    <i class="fas fa-question"></i>
+  </button>
+</div>
+
+<div class="register-container">
+  <div class="register-form">
+    <h2 style="text-align: center; margin-bottom: 30px;" data-translate="register">Cadastro</h2>
+    <form id="registerForm" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label for="username" data-translate="username">Usuário</label>
+        <input type="text" id="username" required>
+        <div class="error-message" id="username-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="email" data-translate="email">E-mail</label>
+        <input type="email" id="email" required>
+        <div class="error-message" id="email-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="password" data-translate="password">Senha</label>
+        <input type="password" id="password" required>
+        <div class="error-message" id="password-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password" data-translate="confirm-password">Confirmar Senha</label>
+        <input type="password" id="confirm-password" required>
+        <div class="error-message" id="confirm-password-error"></div>
+      </div>
+      <button type="submit" class="register-button" data-translate="register">Cadastrar</button>
+      <button type="button" class="back-button" onclick="window.location.href='luantobias-site-login.html'" data-translate="back">Voltar</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="helpModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="toggleHelp()">×</span>
+    <div class="help-message" data-translate="help-message">
+      Eu gostaria de saber quem está acessando minhas coisas pessoais por questões de segurança, então espero que respeitem essa decisão! :)
+    </div>
+  </div>
+</div>
+
+<script>
+const translations = {
+  'pt-BR': {
+    'register': 'Cadastro',
+    'username': 'Usuário',
+    'email': 'E-mail',
+    'password': 'Senha',
+    'confirm-password': 'Confirmar Senha',
+    'back': 'Voltar',
+    'help-message': 'Eu gostaria de saber quem está acessando minhas coisas pessoais por questões de segurança, então espero que respeitem essa decisão! :)',
+    'invalid-email': 'E-mail inválido',
+    'password-mismatch': 'As senhas não coincidem',
+    'invalid-chars': 'Caracteres inválidos detectados'
+  },
+  'en-US': {
+    'register': 'Register',
+    'username': 'Username',
+    'email': 'Email',
+    'password': 'Password',
+    'confirm-password': 'Confirm Password',
+    'back': 'Back',
+    'help-message': 'I would like to know who is accessing my personal things for security reasons, so I hope you respect this decision! :)',
+    'invalid-email': 'Invalid email',
+    'password-mismatch': 'Passwords do not match',
+    'invalid-chars': 'Invalid characters detected'
+  }
+};
+
+let currentLanguage = 'pt-BR';
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'pt-BR' ? 'en-US' : 'pt-BR';
+  updateTranslations();
+}
+
+function updateTranslations() {
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translations[currentLanguage][key]) {
+      element.textContent = translations[currentLanguage][key];
+    }
+  });
+}
+
+function toggleTheme() {
+  const body = document.body;
+  const themeToggle = document.querySelector('.theme-toggle i');
+  
+  if (body.getAttribute('data-theme') === 'dark') {
+    body.removeAttribute('data-theme');
+    themeToggle.classList.remove('fa-sun');
+    themeToggle.classList.add('fa-moon');
+  } else {
+    body.setAttribute('data-theme', 'dark');
+    themeToggle.classList.remove('fa-moon');
+    themeToggle.classList.add('fa-sun');
+  }
+}
+
+function toggleHelp() {
+  const modal = document.getElementById('helpModal');
+  modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return regex.test(email);
+}
+
+function showError(elementId, message) {
+  const errorElement = document.getElementById(elementId);
+  errorElement.textContent = translations[currentLanguage][message] || message;
+  errorElement.style.display = 'block';
+}
+
+function clearError(elementId) {
+  const errorElement = document.getElementById(elementId);
+  errorElement.style.display = 'none';
+}
+
+function handleRegister(event) {
+  event.preventDefault();
+  let isValid = true;
+  
+  // Clear all previous errors
+  const errorElements = document.querySelectorAll('.error-message');
+  errorElements.forEach(element => element.style.display = 'none');
+  
+  const username = document.getElementById('username').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+  
+  // Validate email
+  if (!validateEmail(email)) {
+    showError('email-error', 'invalid-email');
+    isValid = false;
+  }
+  
+  // Check for special characters in email (beyond those allowed in email)
+  if (/[^a-zA-Z0-9.@_-]/.test(email)) {
+    showError('email-error', 'invalid-chars');
+    isValid = false;
+  }
+  
+  // Password match validation
+  if (password !== confirmPassword) {
+    showError('confirm-password-error', 'password-mismatch');
+    isValid = false;
+  }
+  
+  if (isValid) {
+    // If all validations pass, you can submit the form
+    // For demo purposes, we'll just redirect to login
+    window.location.href = 'login.html';
+  }
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('helpModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// Initialize translations
+updateTranslations();
+</script>
+</body></html>

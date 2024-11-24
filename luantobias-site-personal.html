@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <base href="." />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <title>Personal</title>
+    <link rel="stylesheet" href=".\css\luantobias-site-personal.css">
+</head>
+
+<body>
+    <div class="controls"><button class="back-btn" onclick="window.location.href='index.html'"><i
+                class="fas fa-arrow-left"></i></button><button class="theme-toggle" onclick="toggleTheme()"><i
+                class="fas fa-moon"></i></button><button class="lang-toggle" onclick="toggleLangMenu()"><i
+                class="fas fa-globe"></i></button>
+        <div class="lang-menu" id="langMenu">
+            <div class="lang-option" onclick="changeLanguage('pt')">🇧🇷 PT</div>
+            <div class="lang-option" onclick="changeLanguage('en')">🇺🇸 EN</div>
+            <div class="lang-option" onclick="changeLanguage('es')">🇪🇸 ES</div>
+            <div class="lang-option" onclick="changeLanguage('fr')">🇫🇷 FR</div>
+            <div class="lang-option" onclick="changeLanguage('ja')">🇯🇵 JA</div>
+        </div>
+    </div>
+    <nav><button class="nav-button active" onclick="showSection('home')">Home</button><button class="nav-button"
+            onclick="showSection('gallery')">Gallery</button><button class="nav-button"
+            onclick="showSection('posts')">Posts</button></nav>
+    <main>
+        <section id="home" class="home-section">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <div class="profile-img-placeholder"></div>
+                </div>
+                <div class="profile-content">
+                    <div class="presentation">Personal presentation text here...</div>
+                    <div class="social-links"><a href="https://instagram.com/username" class="social-link"><i
+                                class="fab fa-instagram"></i></a><a href="https://twitter.com/username"
+                            class="social-link"><i class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+        </section>
+        <section id="gallery" class="gallery-section hidden">
+            <div class="camera-categories">
+                <div class="category">
+                    <h3 class="category-title">Camera Type 1</h3>
+                    <div class="photo-grid">
+                        <div class="photo-placeholder"></div>
+                        <div class="photo-placeholder"></div>
+                    </div>
+                </div>
+                <div class="category">
+                    <h3 class="category-title">Camera Type 2</h3>
+                    <div class="photo-grid">
+                        <div class="photo-placeholder"></div>
+                        <div class="photo-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="posts" class="blog-posts hidden">
+            <article class="post-card">
+                <div class="post-image">
+                    <div class="post-img-placeholder"></div>
+                </div>
+                <h2 class="post-title">Post Title 1</h2>
+                <div class="post-content">Post content rendered from Markdown...</div>
+            </article>
+            <article class="post-card">
+                <div class="post-image">
+                    <div class="post-img-placeholder"></div>
+                </div>
+                <h2 class="post-title">Post Title 2</h2>
+                <div class="post-content">Another post content rendered from Markdown...</div>
+            </article>
+        </section>
+    </main>
+    <footer><span class="footer-text">Site criado por Luan Tobias</span></footer>
+    <script src=".\js\luantobias-site-personal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <base href="." />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <title>Profissional</title>
+    <link rel="stylesheet" href=".\css\luantobias-site-professional.css">
+</head>
+
+<body>
+    <div class="controls"><button class="back-btn" onclick="window.location.href='index.html'"><i
+                class="fas fa-arrow-left"></i></button><button class="theme-toggle" onclick="toggleTheme()"><i
+                class="fas fa-moon"></i></button><button class="lang-toggle" onclick="toggleLangMenu()"><i
+                class="fas fa-globe"></i></button>
+        <div class="lang-menu" id="langMenu">
+            <div class="lang-option" onclick="changeLanguage('pt')">🇧🇷 PT</div>
+            <div class="lang-option" onclick="changeLanguage('en')">🇺🇸 EN</div>
+            <div class="lang-option" onclick="changeLanguage('es')">🇪🇸 ES</div>
+            <div class="lang-option" onclick="changeLanguage('fr')">🇫🇷 FR</div>
+            <div class="lang-option" onclick="changeLanguage('ja')">🇯🇵 JA</div>
+        </div>
+    </div>
+    <nav><button class="nav-button active" onclick="showSection('posts')">Posts</button><button class="nav-button"
+            onclick="showSection('skills')">Skills</button><button class="nav-button"
+            onclick="showSection('projects')">Projetos</button><button class="nav-button"
+            onclick="showSection('info')">Info</button></nav>
+    <main>
+        <section id="posts" class="blog-posts">
+            <article class="post-card">
+                <h2 class="post-title">Título do Post</h2>
+                <div class="post-content">Conteúdo do post em formato de texto...</div>
+            </article>
+        </section>
+        <section id="skills" class="skills-section hidden">
+            <div class="skill-card">
+                <h3 class="skill-title">JavaScript</h3>
+                <p class="skill-description">Aplicação prática em desenvolvimento de interfaces interativas, manipulação
+                    de DOM e integração com APIs.</p>
+            </div>
+            <div class="skill-card">
+                <h3 class="skill-title">React</h3>
+                <p class="skill-description">Desenvolvimento de componentes reutilizáveis, gerenciamento de estado e
+                    criação de interfaces responsivas.</p>
+            </div>
+        </section>
+        <section id="projects" class="projects-section hidden"></section>
+        <section id="info" class="info-section hidden">
+            <div class="info-card">
+                <div class="presentation">Sou um desenvolvedor apaixonado por tecnologia com experiência em
+                    desenvolvimento web e mobile. Focado em criar soluções eficientes e escaláveis, sempre buscando
+                    aprender e aplicar novas tecnologias.</div>
+                <div class="experience-item">
+                    <h3 class="experience-title">Desenvolvedor Full Stack - Empresa XYZ</h3>
+                    <div class="experience-period">Jan 2022 - Presente</div>
+                    <p>Desenvolvimento de aplicações web utilizando React, Node.js e MongoDB. Implementação de features
+                        e manutenção de sistemas existentes.</p>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-title">Desenvolvedor Frontend - Empresa ABC</h3>
+                    <div class="experience-period">Jun 2020 - Dez 2021</div>
+                    <p>Desenvolvimento de interfaces responsivas e componentes reutilizáveis utilizando React e
+                        TypeScript.</p>
+                </div>
+                <div class="social-links"><a href="mailto:seu.email@exemplo.com" class="social-link"><i
+                            class="fas fa-envelope"></i> seu.email@exemplo.com</a><a
+                        href="https://linkedin.com/in/seu-perfil" class="social-link"><i class="fab fa-linkedin"></i>
+                        LinkedIn</a><a href="https://github.com/seu-usuario" class="social-link"><i
+                            class="fab fa-github"></i> GitHub</a></div>
+            </div>
+        </section>
+    </main>
+    <footer><span class="footer-text">Site criado por {meu nome}</span></footer>
+    <script src=".\js\luantobias-site-professional.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<html><head><base href="." />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<title>Login</title>
+<link rel="stylesheet" href=".\css\luantobias-site-login.css">
+</head>
+<body>
+<div class="controls">
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <button class="lang-toggle" onclick="toggleLanguage()">
+    <i class="fas fa-globe"></i>
+  </button>
+  <button class="help-toggle" onclick="toggleHelp()">
+    <i class="fas fa-question"></i>
+  </button>
+</div>
+
+<div class="login-container">
+  <div class="login-form">
+    <h2 style="text-align: center; margin-bottom: 30px;" data-translate="login">Login</h2>
+    <form onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="username" data-translate="username">Usuário</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password" data-translate="password">Senha</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="login-button" data-translate="enter">Entrar</button>
+    </form>
+    
+    <div class="divider"><span data-translate="or">ou</span></div>
+    
+    <div id="g_id_onload"
+         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+         data-callback="handleGoogleSignIn">
+    </div>
+    <button class="google-login-button" onclick="initializeGoogleSignIn()">
+      <img src="https://www.google.com/favicon.ico" alt="Google logo" width="20" height="20">
+      <span data-translate="google-continue">Continuar com Google</span>
+    </button>
+    
+    <button class="register-button" onclick="window.location.href='register.html'" data-translate="register">Cadastrar</button>
+  </div>
+</div>
+
+<div class="modal" id="helpModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="toggleHelp()">×</span>
+    <div class="help-message" data-translate="help-message">
+      Eu gostaria de saber quem está acessando minhas coisas pessoais por questões de segurança, então espero que respeitem essa decisão! :)
+    </div>
+  </div>
+</div>
+
+<script src=".\js\luantobias-site-login.js"></script>
+</body></html>

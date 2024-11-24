@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <base href="." />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <title>Portfólio</title>
+    <link rel="stylesheet" href=".\css\index.css">
+</head>
+
+<body>
+    <div class="controls"><button class="theme-toggle" onclick="toggleTheme()"><i
+                class="fas fa-moon"></i></button><button class="lang-toggle" onclick="toggleLangMenu()"><i
+                class="fas fa-globe"></i></button>
+        <div class="lang-menu" id="langMenu">
+            <div class="lang-option" onclick="changeLanguage('pt')">🇧🇷 PT</div>
+            <div class="lang-option" onclick="changeLanguage('en')">🇺🇸 EN</div>
+            <div class="lang-option" onclick="changeLanguage('es')">🇪🇸 ES</div>
+            <div class="lang-option" onclick="changeLanguage('fr')">🇫🇷 FR</div>
+            <div class="lang-option" onclick="changeLanguage('ja')">🇯🇵 JA</div>
+        </div>
+    </div>
+    <main><img class="profile-img" src="seu-avatar.jpg" alt="Foto de perfil" width="200" height="200" />
+        <h1 class="welcome">Bem-vindo ao meu Portfólio</h1>
+        <h2>Seu Nome</h2>
+        <div class="buttons"><button class="nav-button"
+                onclick="window.location.href='luantobias-site-professional.html'">Profissional</button><button
+                class="nav-button" onclick="window.location.href='luantobias-site-personal.html'">Pessoal</button></div>
+    </main>
+    <footer class="creator"><span>Site criado por Luan Tobias</span></footer>
+    <script src=".\js\index.js"></script>
+</body>
+
+</html>
